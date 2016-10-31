@@ -9,7 +9,7 @@ const queries$ = Rx.Observable
   .fromEvent($title, "keyup")
   .map(e => e.target.value)
   .distinctUntilChanged()
-  .debounce(500);
+  .debounceTime(500);
 
 
 //keyups$.subscribe( e => {
