@@ -8,7 +8,8 @@ const $results = $("#results");
 const queries$ = Rx.Observable
   .fromEvent($title, "keyup")
   .map(e => e.target.value)
-  .distinctUntilChanged();
+  .distinctUntilChanged()
+  .debounce(500);
 
 
 //keyups$.subscribe( e => {
