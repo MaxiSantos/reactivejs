@@ -19,10 +19,14 @@ const simple$ = new Rx.Observable(observer => {
   }, 1000 + (Math.random() * 2000))
 });
 
+const error$ = new Rx.Observable(observer => {
+  observer.error(new Error("Ops !"));
+})
 
-simple$.subscribe(
+//simple$.subscribe(
+error$.subscribe(
   item => console.log(`one.next ${item}`),
-  error => console.log(`one.error ${item}`),
+  error => console.log(`one.error ${error}`),
   () => console.log(`one.complete`)
 );
 
@@ -38,4 +42,4 @@ setTimeout(() => {
       console.log("two.complete")
     }
   })
-})
+}, 3000);
